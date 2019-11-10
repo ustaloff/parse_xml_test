@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Traits\WordsTrait;
+use View;
 
 class HomeController extends Controller
 {
+    use WordsTrait;
+
     /**
      * Create a new controller instance.
      *
@@ -23,6 +27,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $words = $this->getWords();
+
+        return View::make('home', ['items' => $words]);
     }
 }

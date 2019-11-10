@@ -14,7 +14,11 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    @foreach ($items as $word => $count)
+                        <div class="item">
+                            {{ $word . ' - ' . $count }}
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
