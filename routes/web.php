@@ -15,9 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => ['api']], function () {
+    Route::post('/validate/user', [
+        'uses' => 'Auth\RegisterController@user',
+    ]);
+});
 
 Auth::routes();
 

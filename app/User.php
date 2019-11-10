@@ -36,4 +36,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the validation rules that apply to the user.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6|confirmed',
+        ];
+    }
 }
